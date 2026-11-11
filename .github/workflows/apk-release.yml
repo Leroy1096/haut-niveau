@@ -3,6 +3,9 @@
 # Aucun secret requis : APK signée en debug (installable par tous en "sources inconnues").
 name: APK Android → Release
 
+permissions:
+  contents: write
+
 on:
   push:
     tags: ["v*"]
