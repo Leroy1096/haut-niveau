@@ -3,7 +3,7 @@
    Mêmes protections que la réservation : validation double, honeypot, délai.
    ========================================================================== */
 
-import { isSupabaseConfigured } from "./config.js?v=14";
+import { isSupabaseConfigured } from "./config.js?v=16";
 import { getSupabase } from "./supabaseClient.js";
 import { el } from "./data.js";
 import { cleanText, cleanPhone, cleanEmail, isValidPhone, isValidEmail, isValidName } from "./validate.js";
@@ -91,6 +91,15 @@ async function onSubmit(e) {
     console.error(error);
   } else {
     try { localStorage.setItem("msg_dernier_envoi", String(Date.now())); } catch { /* silencieux */ }
+    const waBtn = document.getElementById("waResumeBtn");
+    if (waBtn) {
+      const lignes = ["Bonjour ! Je vous ai envoyé un message depuis le site Haut Niveau :", `• Nom : ${nom}`];
+      if (tel) lignes.push(`• Téléphone : ${tel}`);
+      if (email) lignes.push(`• E-mail : ${email}`);
+      lignes.push("", message);
+      waBtn.href = "https://wa.me/2250140810415?text=" + encodeURIComponent(lignes.join("\n"));
+      waBtn.hidden = false;
+    }
     form.reset();
     showResult("success", "Merci ! Votre message a bien été envoyé. Nous vous répondons sous 24 h ouvrées.");
   }

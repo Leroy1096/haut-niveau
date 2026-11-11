@@ -4,7 +4,7 @@
    compteurs animés, transitions de page, actions mobiles (appel/WhatsApp).
    ========================================================================== */
 
-import { SALON } from "./config.js?v=14";
+import { SALON } from "./config.js?v=16";
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

@@ -5,7 +5,7 @@
    - Créneau déjà pris : la contrainte d'unicité SQL renvoie un message clair.
    ========================================================================== */
 
-import { SALON, isSupabaseConfigured } from "./config.js?v=14";
+import { SALON, isSupabaseConfigured } from "./config.js?v=16";
 import { getSupabase } from "./supabaseClient.js";
 import { loadServices, loadCoiffeurs, el, formatPrixRange, formatDuree } from "./data.js";
 import { cleanText, cleanPhone, isValidPhone, isValidName } from "./validate.js";
@@ -159,6 +159,19 @@ function showSuccess(recap) {
     el("dt", { text: "Heure" }), el("dd", { text: recap.heure }),
     el("dt", { text: "Nom" }), el("dd", { text: recap.nom })
   );
+  const waBtn = document.getElementById("waConfirmBtn");
+  if (waBtn) {
+    const lignes = [
+      "Bonjour ! Je viens de réserver en ligne au salon HAUT NIVEAU :",
+      `• Prestation : ${recap.service}`,
+      `• Coiffeur·se : ${recap.coiffeur}`,
+      `• Date : ${recap.date}`,
+      `• Heure : ${recap.heure}`,
+      `• Nom : ${recap.nom}`,
+    ];
+    if (recap.tel) lignes.push(`• Téléphone : ${recap.tel}`);
+    waBtn.href = "https://wa.me/2250140810415?text=" + encodeURIComponent(lignes.join("\n"));
+  }
   panel.hidden = false;
   panel.scrollIntoView({ behavior: "smooth", block: "center" });
   panel.focus?.();
@@ -203,6 +216,7 @@ async function onSubmit(e) {
     date: new Date(`${payload.date_rdv}T12:00:00`).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" }),
     heure: payload.heure_rdv.replace(":", " h "),
     nom: payload.client_nom,
+    tel: payload.client_telephone,
   };
 
   setLoading(btn, true);

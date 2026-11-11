@@ -2,12 +2,12 @@
    Stratégie : coquille du site en cache-first, données Supabase toujours du réseau.
    Ne casse ni la réservation ni l'admin : aucune interception des POST, du domaine
    Supabase, ni des pages admin. */
-const VERSION = "hn-v1";
+const VERSION = "hn-v2";
 const SHELL = [
   "/", "/index.html",
-  "/css/style.css?v=15",
-  "/js/main.js?v=15", "/js/config.js?v=15", "/js/data.js?v=15",
-  "/js/home.js?v=15", "/images/icon-192.png", "/manifest.webmanifest"
+  "/css/style.css?v=16",
+  "/js/main.js?v=16", "/js/config.js?v=16", "/js/data.js?v=16",
+  "/js/home.js?v=16", "/images/icon-192.png", "/manifest.webmanifest"
 ];
 
 self.addEventListener("install", (e) => {

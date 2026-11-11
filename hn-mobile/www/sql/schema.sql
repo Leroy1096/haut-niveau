@@ -307,7 +307,10 @@ insert into public.origines_autorisees (motif, note) values
   ('http://localhost:%',  'Développement local'),
   ('http://127.0.0.1:%',  'Développement local'),
   ('https://%.e2b.app',   'Aperçu de développement (sandbox)'),
-  ('https://%.vercel.app','Production Vercel')
+  ('https://%.vercel.app','Production Vercel'),
+  ('http://localhost',    'Application Android Capacitor (WebView)'),
+  ('https://localhost',   'Application Android Capacitor (WebView https)'),
+  ('capacitor://localhost','Application iOS Capacitor')
 on conflict (motif) do nothing;
 -- ⚠ Après mise en production, ajoutez votre domaine :
 -- insert into public.origines_autorisees values ('https://votre-domaine.ci', 'Site en production');

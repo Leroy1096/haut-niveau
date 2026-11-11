@@ -4,7 +4,7 @@
    par construction (postgREST), ce qui empêche toute injection SQL.
    ========================================================================== */
 
-import { SUPABASE_URL, SUPABASE_ANON_KEY, isSupabaseConfigured } from "./config.js?v=14";
+import { SUPABASE_URL, SUPABASE_ANON_KEY, isSupabaseConfigured } from "./config.js?v=16";
 
 let clientPromise = null;
 

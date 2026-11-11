@@ -6,7 +6,7 @@
      seul un compte présent dans la table `admin` peut modifier les données.
    ========================================================================== */
 
-import { isSupabaseConfigured } from "./config.js?v=14";
+import { isSupabaseConfigured } from "./config.js?v=16";
 import { getSupabase } from "./supabaseClient.js";
 import { el, formatPrixRange, formatDuree, CATEGORIES_GALERIE } from "./data.js";
 import { cleanText, cleanUrl, isValidName } from "./validate.js";
