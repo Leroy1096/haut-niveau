@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Prendre rendez-vous — Haut Niveau, salon de coiffure à Oupoyo</title>
+  <meta name="description" content="Réservez votre coiffure en 2 minutes au salon Haut Niveau à Oupoyo : choisissez le service, le coiffeur, la date et l'heure. Confirmation rapide.">
+  <link rel="icon" type="image/png" href="images/favicon-hn.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#171310">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <link rel="stylesheet" href="css/style.css?v=15">
+  <script>(function(){try{var t=localStorage.getItem("theme")||"dark";document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="dark"}})();</script>
+</head>
+<body class="page-enter">
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 7.5 20 19M8.5 16.5 20 5"/></svg>
+        <span class="brand-logo"><img src="images/logo-hn-monogram.png" alt="Logo Haut Niveau" width="30" height="20"><span class="brand-txt">HAUT&nbsp;NIVEAU<small>Coiffure · Oupoyo</small></span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="services.html">Services &amp; Tarifs</a></li>
+          <li><a href="equipe.html">Équipe &amp; Salon</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-cta"><a class="btn" href="rendez-vous.html">Prendre rendez-vous</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer de thème"></button>
+        <a class="btn" href="rendez-vous.html">Prendre rendez-vous</a>
+        <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="section" aria-labelledby="titre-page">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="kicker">Réservation</span>
+          <h1 id="titre-page">Prendre rendez-vous</h1>
+          <p>Remplissez ce formulaire (1 minute) — nous confirmons par SMS ou WhatsApp, ou appelez le <a href="tel:+2250140810415">(+225) 01 40 81 04 15</a>.</p>
+        </div>
+
+        <div class="split" style="align-items:start">
+          <!-- ===== Formulaire ===== -->
+          <div class="form-card reveal">
+            <div id="formAlert" class="alert" role="alert" hidden></div>
+
+            <form id="bookingForm" class="form-grid" novalidate>
+              <!-- Champ piège anti-spam : invisible pour les humains -->
+              <div class="hp-field" aria-hidden="true">
+                <label for="entreprise">Ne pas remplir</label>
+                <input id="entreprise" name="entreprise" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="field">
+                <label for="nom">Votre nom <span class="req" aria-hidden="true">*</span></label>
+                <input id="nom" name="nom" type="text" required maxlength="80" autocomplete="name" placeholder="Ex. : Adjoua Kouamé">
+                <span class="field-error" role="alert"></span>
+              </div>
+
+              <div class="field">
+                <label for="telephone">Téléphone <span class="req" aria-hidden="true">*</span></label>
+                <input id="telephone" name="telephone" type="tel" required maxlength="20" autocomplete="tel" inputmode="tel" placeholder="Ex. : +225 07 00 00 00 00">
+                <span class="hint">Pour la confirmation de votre rendez-vous.</span>
+                <span class="field-error" role="alert"></span>
+              </div>
+
+              <div class="field">
+                <label for="service">Service <span class="req" aria-hidden="true">*</span></label>
+                <select id="service" name="service" required>
+                  <option value="">— Chargement des services… —</option>
+                </select>
+                <span class="field-error" role="alert"></span>
+              </div>
+
+              <div class="field">
+                <label for="coiffeur">Coiffeur·se préféré·e</label>
+                <select id="coiffeur" name="coiffeur">
+                  <option value="">Sans préférence</option>
+                </select>
+                <span class="field-error" role="alert"></span>
+              </div>
+
+              <div class="field">
+                <label for="date">Date <span class="req" aria-hidden="true">*</span></label>
+                <input id="date" name="date" type="date" required>
+                <span class="hint">Ouvert 7 j/7 — le dimanche à partir de 14h00.</span>
+                <span class="field-error" role="alert"></span>
+              </div>
+
+              <div class="field">
+                <label for="heure">Heure <span class="req" aria-hidden="true">*</span></label>
+                <select id="heure" name="heure" required>
+                  <option value="">— Choisissez l'heure —</option>
+                </select>
+                <span class="field-error" role="alert"></span>
+              </div>
+
+              <div class="field full">
+                <label for="message">Message (facultatif)</label>
+                <textarea id="message" name="message" maxlength="500" placeholder="Précisions utiles : longueur des cheveux, référence photo de la galerie, allergie connue…"></textarea>
+                <span class="field-error" role="alert"></span>
+              </div>
+
+              <div class="full">
+                <button class="btn btn-block" id="submitBtn" type="submit">Confirmer ma demande de rendez-vous</button>
+                <p class="hint" style="text-align:center;margin-top:.7rem">Aucune donnée bancaire demandée — vous ne payez qu'au salon.</p>
+              </div>
+            </form>
+
+            <!-- ===== Confirmation ===== -->
+            <div id="successPanel" hidden tabindex="-1">
+              <div class="alert alert-success">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8.5 12.5l2.5 2.5 5-5.5"/></svg>
+                <div><strong>Demande envoyée !</strong> Nous vous confirmons très vite par SMS ou WhatsApp. Voici le récapitulatif :</div>
+              </div>
+              <dl class="recap" id="recapZone"></dl>
+              <a class="btn btn-whatsapp" href="https://wa.me/2250140810415?text=Bonjour%20%21%20Je%20confirme%20mon%20rendez-vous.%20%C3%80%20tout%20%C3%A0%20l%27heure%20%21" target="_blank" rel="noopener">💬 Confirmer ma réservation par WhatsApp</a>
+
+              <p class="alert alert-error" id="demoNote" hidden>Mode démonstration : la base de données n'est pas encore connectée, votre demande n'a pas été enregistrée.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem">
+                <a class="btn btn-whatsapp" href="https://wa.me/2250140810415" target="_blank" rel="noopener">Confirmer plus vite sur WhatsApp</a>
+                <a class="btn btn-outline" href="index.html">Retour à l'accueil</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== Comment ça marche ===== -->
+          <aside class="reveal reveal-delay-1" aria-label="Comment ça marche">
+            <div class="card">
+              <h2 style="font-size:1.35rem">Comment ça marche ?</h2>
+              <ol class="steps">
+                <li class="step-item"><div><h3>Choisissez votre créneau</h3><p>Service, coiffeur·se, date et heure : tout se fait ici, sans compte à créer.</p></div></li>
+                <li class="step-item"><div><h3>Nous confirmons</h3><p>Vous recevez une confirmation par SMS ou WhatsApp, généralement dans l'heure.</p></div></li>
+                <li class="step-item"><div><h3>Venez comme vous êtes</h3><p>Votre fauteuil est prêt à l'heure : zéro attente, thé offert.</p></div></li>
+              </ol>
+            </div>
+            <div class="card" style="margin-top:1.4rem">
+              <h2 style="font-size:1.35rem">Bon à savoir</h2>
+              <ul class="info-list" style="gap:.4rem">
+                <li class="muted">✓ Annulation gratuite jusqu'à 2 h avant (par téléphone ou WhatsApp)</li>
+                <li class="muted">✓ Retard de plus de 15 min = créneau replanifié ensemble</li>
+                <li class="muted">✓ Paiement au salon : espèces, Wave ou Orange Money</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand"><img src="images/logo-hn-monogram.png" alt="" width="34" height="23" style="vertical-align:-6px;margin-right:.5rem">HAUT&nbsp;NIVEAU</div>
+          <p>Salon de coiffure &amp; barbier à Oupoyo. L'élégance au quotidien, le soin en plus.</p>
+          <div class="socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.6V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.3H7.5V14h2.8v8z"/></svg></a>
+            <a href="https://wa.me/2250140810415" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.6 12.1c-.2-.1-1.5-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1a6.7 6.7 0 0 1-3.4-2.5c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7a9.1 9.1 0 0 0 3.5 3.1c1.3.6 1.9.6 2.5.5.4-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1z"/></svg></a>
+          </div>
+        </div>
+        <nav aria-label="Plan du site">
+          <h3>Navigation</h3>
+          <ul class="footer-nav">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services &amp; Tarifs</a></li>
+            <li><a href="equipe.html">Équipe &amp; Salon</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="rendez-vous.html">Prendre rendez-vous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h3>Horaires</h3>
+          <table class="hours-mini">
+            <tbody>
+              <tr><td>Lun – Sam</td><td>7h30 – 21h00</td></tr>
+              <tr><td>Dimanche</td><td>14h00 – 20h00</td></tr>
+              <tr><td>Dim. matin</td><td>Fermé</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul class="footer-contact">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Carrefour Collège Moderne, Oupoyo — axe Soubré – Méagui</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.4 2.1L8 10a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><a href="tel:+2250140810415">(+225) 01 40 81 04 15</a></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg><a href="mailto:haut10niveau@gmail.com">haut10niveau@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="currentYear">2026</span> Haut Niveau — Oupoyo, Côte d'Ivoire. Tous droits réservés.</span>
+        <span><a href="admin/">Espace pro</a> · Fait avec soin à Oupoyo ✂</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js?v=15"></script>
+  <script type="module" src="js/rendez-vous.js?v=15"></script>
+</body>
+</html>

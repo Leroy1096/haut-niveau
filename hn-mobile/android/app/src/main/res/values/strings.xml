@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Haut Niveau</string>
+    <string name="title_activity_main">Haut Niveau</string>
+    <string name="package_name">ci.hautniveau.app</string>
+    <string name="custom_url_scheme">ci.hautniveau.app</string>
+</resources>

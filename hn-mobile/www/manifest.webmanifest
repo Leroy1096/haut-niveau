@@ -1,0 +1,23 @@
+{
+  "name": "Haut Niveau — Salon de coiffure & barber, Oupoyo",
+  "short_name": "Haut Niveau",
+  "description": "Réservez votre coiffure chez Haut Niveau à Oupoyo : coupes, dégradés, barbe, locks, soins. RDV en ligne, WhatsApp direct.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#171310",
+  "theme_color": "#171310",
+  "categories": ["lifestyle", "business"],
+  "icons": [
+    { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Prendre rendez-vous", "url": "/rendez-vous.html", "icons": [{ "src": "images/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Galerie", "url": "/galerie.html", "icons": [{ "src": "images/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

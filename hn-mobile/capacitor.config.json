@@ -1,0 +1,6 @@
+{
+  "appId": "ci.hautniveau.app",
+  "appName": "Haut Niveau",
+  "webDir": "www",
+  "android": { "allowMixedContent": false }
+}

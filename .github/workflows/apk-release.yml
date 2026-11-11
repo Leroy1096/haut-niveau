@@ -1,0 +1,51 @@
+# CI/CD — Haut Niveau : compile l'APK Android et le publie en GitHub Release.
+# Déclenchement : tag "v*" (ex. v1.0.0) ou manuellement (Actions → Run workflow).
+# Aucun secret requis : APK signée en debug (installable par tous en "sources inconnues").
+name: APK Android → Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Installer les dépendances npm (Capacitor)
+        working-directory: hn-mobile
+        run: npm ci
+
+      - name: Synchroniser le site web dans l'app (dernière version du site)
+        working-directory: hn-mobile
+        run: |
+          rm -rf www && mkdir www
+          (cd .. && tar cf - --exclude=hn-mobile --exclude=.git --exclude=.github .) | tar xf - -C www
+          npx cap sync android
+
+      - name: Compiler l'APK
+        working-directory: hn-mobile/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Renommer l'APK
+        run: cp hn-mobile/android/app/build/outputs/apk/debug/app-debug.apk haut-niveau.apk
+
+      - name: Publier dans GitHub Releases
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: haut-niveau.apk
+          generate_release_notes: true

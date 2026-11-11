@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Espace pro — Haut Niveau, Oupoyo</title>
+  <link rel="icon" type="image/png" href="../images/favicon-hn.png">
+  <link rel="stylesheet" href="../css/style.css?v=15">
+  <script>(function(){try{var t=localStorage.getItem("theme")||"dark";document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="dark"}})();</script>
+</head>
+<body class="page-enter" data-no-mobile-cta="true">
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 7.5 20 19M8.5 16.5 20 5"/></svg>
+        <span class="brand-logo"><img src="../images/logo-hn-monogram.png" alt="Logo Haut Niveau" width="30" height="20"><span class="brand-txt">HAUT&nbsp;NIVEAU<small>Espace pro</small></span>
+      </a>
+      <div class="header-actions" style="display:flex">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer de thème"></button>
+        <a class="btn btn-sm btn-outline" href="../index.html">← Voir le site</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu" class="section">
+    <div class="container" id="adminApp">
+
+      <!-- ============ Connexion ============ -->
+      <section id="loginView" style="max-width:440px;margin:2rem auto" aria-labelledby="titre-login">
+        <div class="section-head center">
+          <span class="kicker">Espace professionnel</span>
+          <h1 id="titre-login" style="font-size:1.9rem">Connexion</h1>
+          <p>Réservé à l'équipe du salon.</p>
+        </div>
+        <div class="form-card">
+          <div id="loginAlert" class="alert" role="alert" hidden></div>
+          <form id="loginForm" class="form-grid">
+            <div class="field">
+              <label for="email">E-mail professionnel</label>
+              <input id="email" name="email" type="email" required autocomplete="username" placeholder="haut10niveau@gmail.com">
+            </div>
+            <div class="field">
+              <label for="password">Mot de passe</label>
+              <input id="password" name="password" type="password" required autocomplete="current-password">
+            </div>
+            <button class="btn btn-block" type="submit">Se connecter</button>
+            <p style="text-align:center;margin:0"><a href="#" id="forgotLink">Mot de passe oublié ?</a></p>
+          </form>
+        </div>
+      </section>
+
+      <!-- ============ Réinitialisation du mot de passe ============ -->
+      <section id="resetView" style="max-width:440px;margin:2rem auto" hidden aria-labelledby="titre-reset">
+        <div class="section-head center">
+          <span class="kicker">Sécurité</span>
+          <h1 id="titre-reset" style="font-size:1.9rem">Nouveau mot de passe</h1>
+        </div>
+        <div class="form-card">
+          <form id="resetForm" class="form-grid">
+            <div class="field">
+              <label for="newpass">Nouveau mot de passe (8 caractères minimum)</label>
+              <input id="newpass" name="newpass" type="password" required minlength="8" autocomplete="new-password">
+            </div>
+            <button class="btn btn-block" type="submit">Mettre à jour</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ============ Tableau de bord ============ -->
+      <section id="dashView" hidden aria-label="Tableau de bord">
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;margin-bottom:1.6rem">
+          <div>
+            <span class="kicker">Tableau de bord</span>
+            <h1 style="font-size:1.9rem;margin:0">Bonjour 👋</h1>
+          </div>
+          <button class="btn btn-sm btn-outline" id="logoutBtn" type="button">Se déconnecter</button>
+        </div>
+
+        <div class="admin-tabs" role="group" aria-label="Rubriques d'administration">
+          <button class="filter-btn" data-tab="rdv" aria-pressed="true">Rendez-vous</button>
+          <button class="filter-btn" data-tab="coiffeurs" aria-pressed="false">Coiffeurs</button>
+          <button class="filter-btn" data-tab="services" aria-pressed="false">Services</button>
+          <button class="filter-btn" data-tab="avis" aria-pressed="false">Avis</button>
+          <button class="filter-btn" data-tab="galerie" aria-pressed="false">Galerie</button>
+          <button class="filter-btn" data-tab="messages" aria-pressed="false">Messages</button>
+        </div>
+
+        <div id="tabContent">
+          <section id="tab-rdv"><div id="rdvList"></div></section>
+
+          <section id="tab-coiffeurs" hidden>
+            <div id="coiffeursList"></div>
+            <h2 style="font-size:1.3rem;margin:2rem 0 1rem">Ajouter / modifier un coiffeur</h2>
+            <form id="coiffeurForm" class="form-grid form-card">
+              <div class="field"><label for="cf-nom">Nom</label><input id="cf-nom" name="nom" type="text" required maxlength="80"></div>
+              <div class="field"><label for="cf-spe">Spécialités</label><input id="cf-spe" name="specialites" type="text" required maxlength="120" placeholder="Ex. : Tresses & coiffures protectrices"></div>
+              <div class="field"><label for="cf-exp">Années d'expérience</label><input id="cf-exp" name="experience_annees" type="number" min="0" max="60" required></div>
+              <div class="field"><label for="cf-photo">Photo (URL, ex. images/team-x.jpg)</label><input id="cf-photo" name="photo_url" type="text" maxlength="500"></div>
+              <div class="field full"><label for="cf-bio">Courte bio</label><textarea id="cf-bio" name="bio" maxlength="600"></textarea></div>
+              <div class="field"><label style="display:flex;gap:.5rem;align-items:center"><input type="checkbox" name="actif" checked style="width:auto"> Visible sur le site</label></div>
+              <div class="full" style="display:flex;gap:.6rem;flex-wrap:wrap">
+                <button class="btn" type="submit">Enregistrer</button>
+                <button class="btn btn-outline" type="reset" onclick="delete this.form.dataset.id">Réinitialiser</button>
+              </div>
+            </form>
+          </section>
+
+          <section id="tab-services" hidden>
+            <div id="servicesList"></div>
+            <h2 style="font-size:1.3rem;margin:2rem 0 1rem">Ajouter / modifier un service</h2>
+            <form id="serviceForm" class="form-grid form-card">
+              <div class="field"><label for="sv-nom">Nom</label><input id="sv-nom" name="nom" type="text" required maxlength="100"></div>
+              <div class="field"><label for="sv-cat">Catégorie</label><select id="sv-cat" name="categorie" required></select></div>
+              <div class="field"><label for="sv-prix">Prix min (FCFA)</label><input id="sv-prix" name="prix" type="number" min="0" step="100" required></div>
+              <div class="field"><label for="sv-prixmax">Prix max (FCFA)</label><input id="sv-prixmax" name="prix_max" type="number" min="0" step="100" placeholder="Vide = prix unique"></div>
+              <div class="field"><label for="sv-duree">Durée (minutes)</label><input id="sv-duree" name="duree_min" type="number" min="5" max="600" step="5" required></div>
+              <div class="field full"><label for="sv-desc">Description</label><textarea id="sv-desc" name="description" maxlength="400"></textarea></div>
+              <div class="field"><label style="display:flex;gap:.5rem;align-items:center"><input type="checkbox" name="actif" checked style="width:auto"> Visible sur le site</label></div>
+              <div class="full" style="display:flex;gap:.6rem;flex-wrap:wrap">
+                <button class="btn" type="submit">Enregistrer</button>
+                <button class="btn btn-outline" type="reset" onclick="delete this.form.dataset.id">Réinitialiser</button>
+              </div>
+            </form>
+          </section>
+
+          <section id="tab-avis" hidden><div id="avisList"></div></section>
+
+          <section id="tab-galerie" hidden>
+            <div id="galerieList"></div>
+            <h2 style="font-size:1.3rem;margin:2rem 0 1rem">Ajouter une image</h2>
+            <form id="galerieForm" class="form-grid form-card">
+              <div class="field"><label for="gl-url">URL de l'image</label><input id="gl-url" name="image_url" type="text" required maxlength="500" placeholder="images/ma-photo.jpg ou https://…"></div>
+              <div class="field"><label for="gl-cat">Catégorie</label><select id="gl-cat" name="categorie" required></select></div>
+              <div class="field full"><label for="gl-alt">Texte alternatif (description pour l'accessibilité)</label><input id="gl-alt" name="alt" type="text" maxlength="200"></div>
+              <div class="full"><button class="btn" type="submit">Ajouter à la galerie</button></div>
+            </form>
+          </section>
+
+          <section id="tab-messages" hidden><div id="messagesList"></div></section>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="../js/main.js?v=15"></script>
+  <script type="module" src="../js/admin.js?v=15"></script>
+</body>
+</html>
